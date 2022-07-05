@@ -49,6 +49,27 @@ void Add_to_list(node_lake** node, const char* LakeName, const char* LakeCountry
 }
 
 
+bool Write_data_to_file(node_lake** node, const char* file)
+{
+	FILE* flp;
+
+	if (!(flp = fopen(file, "w")))
+		return false;
+
+	node_lake* indicator = *node;
+	fprintf(flp, "Lake name Country Depth Salinity\n");
+	while (indicator)
+	{
+		fprintf(flp, "%d   %s   %s  %d  %f\n",
+		indicator->id, indicator->LakeName, indicator->LakeCountry, indicator->LakeDepth, indicator->Salinity);
+		indicator = indicator->next;
+	}
+
+}
+
+
+
+
 // Clear stdin
 int clear_stdin()
 {
