@@ -1,5 +1,6 @@
 #include "FunctionsDescription.h"
 
+// Add information to linked list
 void Add_to_list(node_lake** node, const char* LakeName, const char* LakeCountry, int LakeDepth, float Salinity)
 {
 	int id = 0;
@@ -49,6 +50,7 @@ void Add_to_list(node_lake** node, const char* LakeName, const char* LakeCountry
 }
 
 
+// Writing a linked list to a file
 bool Write_data_to_file(node_lake** node, const char* file)
 {
 	FILE* flp;

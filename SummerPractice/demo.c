@@ -4,6 +4,9 @@ int main(int argc, char* argv[]) {
 
 	node_lake* node;
 	node = NULL;
+
+	char file[] = "lakes.txt";
+
 	char LakeName[20];
 	char LakeCountry[30];
 	int LakeDepth;
@@ -99,30 +102,6 @@ int main(int argc, char* argv[]) {
 	}
 
 	// Filling a text file with the entered information about lakes
-	char file[50] = { 0 };
-	printf("\n");
-	CorrectInput = false;
-	while (!CorrectInput)
-	{
-		printf("Enter the name of the file where you want to save the entered information: ");
-		fgets(file, 50, stdin);
-
-		// Input validation
-		if (file[0] == '\n' || file[0] == '\0')
-			CorrectInput = false;
-		else
-			CorrectInput = true;
-
-		if (file[strlen(file) - 1] == '\n')
-			file[strlen(file) - 1] = '\0';
-		else getchar();
-
-		if (!CorrectInput)
-		{
-			printf("Incorrect file name\n\n");
-		}
-	}
-
 	if (Write_data_to_file(&node, file))
 		printf("List saved to file %s\n", file);
 	else
