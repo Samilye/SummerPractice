@@ -1,3 +1,11 @@
+/**
+* @file SummerPratice
+* @author Волошин І.В., гр. 515
+* @date 06 липняя 2022
+* @brief Літня практика
+*
+* Створення текстового файлу на 12 записів з інформацією про озера
+*/
 #include "FunctionsDescription.h"
 
 int main(int argc, char* argv[]) {
@@ -8,17 +16,18 @@ int main(int argc, char* argv[]) {
 	FILE* flp;
 	char file[] = "lakes.txt";
 
-	char LakeName[20];
+	char LakeName[30];
 	char LakeCountry[30];
 	int LakeDepth;
 	float Salinity;
+
 	bool CorrectInput;
 	bool OperationResult;
 
 	int choice;
 
 	if (flp = fopen(file, "r")) {
-		fseek(flp, 32, SEEK_SET);
+		fseek(flp, 38, SEEK_SET);
 
 		while (fscanf(flp, "%s%s%d%f", LakeName, LakeCountry, &LakeDepth, &Salinity) != EOF) {
 			Add_to_list(&node, LakeName, LakeCountry, LakeDepth, Salinity);
@@ -39,7 +48,7 @@ int main(int argc, char* argv[]) {
 			while (!CorrectInput)
 			{
 				printf("Enter lake name: ");
-				fgets(LakeName, 20, stdin);
+				fgets(LakeName, 30, stdin);
 
 				// Input validation
 				if (LakeName[0] == '\n' || LakeName[0] == '\0')
@@ -130,18 +139,19 @@ int main(int argc, char* argv[]) {
 		getchar();
 	}
 
-	printf("====Functions====");
-	printf("\n1.Display the entire list");
-	printf("\n2.Display information about lakes less than 50 meters deep and salinity greater than 20%");
-	printf("\nEnter the number of the feature you want to use: ");
-	scanf("%d", &choice);
+	while (true) {
+		printf("====Functions====");
+		printf("\n1.Display the entire list");
+		printf("\n2.Display information about lakes less than 50 meters deep and salinity greater than 20 percent");
+		printf("\n3.Exit");
+		printf("\nEnter the number of the feature you want to use: ");
+		scanf("%d", &choice);
 
-	if (choice == 1) {
-		Display_all_records(&node);
+		switch (choice) {
+		case 1: Display_all_records(&node); break;
+		case 2: Display_records_by_characteristics(&node); break;
+		case 3: exit(EXIT_SUCCESS); break;
+		default: printf("\nInvalid operation number\n\n"); break;
+		}
 	}
-	if (choice == 2) {
-		Display_records_by_characteristics(&node);
-	}
-
-	return 0;
 }

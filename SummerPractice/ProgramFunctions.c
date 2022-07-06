@@ -3,7 +3,7 @@
 // Add information to linked list
 void Add_to_list(node_lake** node, const char* LakeName, const char* LakeCountry, int LakeDepth, float Salinity)
 {
-	int id = 0;
+	int id = 1;
 	node_lake* new_node;
 	node_lake* indicator;
 	// Create the first element of the linked list
@@ -16,8 +16,8 @@ void Add_to_list(node_lake** node, const char* LakeName, const char* LakeCountry
 			exit(1);
 		}
 		// If the memory is allocated successfully, copy the entered data to the node
-		new_node->id = 0;
-		strncpy(new_node->LakeName, LakeName, 20);
+		new_node->id = 1;
+		strncpy(new_node->LakeName, LakeName, 30);
 		strncpy(new_node->LakeCountry, LakeCountry, 30);
 		new_node->LakeDepth = LakeDepth;
 		new_node->Salinity = Salinity;
@@ -40,7 +40,7 @@ void Add_to_list(node_lake** node, const char* LakeName, const char* LakeCountry
 	if (!new_node) exit(1);
 
 	new_node->id = id + 1;
-	strncpy(new_node->LakeName, LakeName, 20);
+	strncpy(new_node->LakeName, LakeName, 30);
 	strncpy(new_node->LakeCountry, LakeCountry, 30);
 	new_node->LakeDepth = LakeDepth;
 	new_node->Salinity = Salinity;
@@ -57,7 +57,7 @@ void Display_all_records(node_lake** node) {
 	int i = 0;
 	while (indicator)
 	{
-		printf("\nNumber: %d\nLake name: %s\nCountry: %s\nDepth: %d\nSalinity: %f\n",
+		printf("\nNumber: %d\nLake name: %s\nCountry: %s\nDepth: %d\nSalinity in percent: %.1f %\n\n",
 			indicator->id, indicator->LakeName, indicator->LakeCountry, indicator->LakeDepth, indicator->Salinity);
 		i++;
 
@@ -77,7 +77,7 @@ void Display_records_by_characteristics(node_lake** node)
 	{
 		if (indicator->LakeDepth < 50 && indicator->Salinity > 20)
 		{
-			printf("\nNumber: %d\nLake name: %s\nCountry: %s\nDepth: %d\nSalinity: %f\n",
+			printf("\nNumber: %d\nLake name: %s\nCountry: %s\nDepth: %d\nSalinity in percent: %.1f\n\n",
 				indicator->id, indicator->LakeName, indicator->LakeCountry, indicator->LakeDepth, indicator->Salinity);
 			i++;
 		}
@@ -98,11 +98,10 @@ bool Write_data_to_file(node_lake** node, const char* file)
 		return false;
 
 	node_lake* indicator = *node;
-	fprintf(flp, "Lake name Country Depth Salinity\n");
+	fprintf(flp, "Lake Name   Country   Depth   Salinity\n");
 	while (indicator)
 	{
-		fprintf(flp, "%d   %s   %s  %d  %f\n",
-		indicator->id, indicator->LakeName, indicator->LakeCountry, indicator->LakeDepth, indicator->Salinity);
+		fprintf(flp, "%s   %s  %d    %.1f\n", indicator->LakeName, indicator->LakeCountry, indicator->LakeDepth, indicator->Salinity);
 		indicator = indicator->next;
 	}
 	return true;

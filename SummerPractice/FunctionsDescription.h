@@ -12,7 +12,7 @@
 
 typedef struct node {
 	int id;
-	char* LakeName[20];
+	char* LakeName[30];
 	char* LakeCountry[30];
 	int LakeDepth;
 	float Salinity;
