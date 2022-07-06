@@ -1,0 +1,13 @@
+Lake name Country Depth Salinity
+Mono   California  500  5.000000
+Gaetel   Ethiopia  500  43.000000
+Retba   Senegal  500  23.299999
+Assal   Africa  5  50.000000
+Vanda   Antarctide  50  42.000000
+Elton   Russia  1  23.000000
+Urmia   Iran  5  5.000000
+Test1   Test1  11  45.000000
+Test2   Test2  50  5.000000
+Test3   Test3  14  56.000000
+Test4   Test4  6  60.000000
+Test5   Test5  4  40.000000

@@ -50,6 +50,24 @@ void Add_to_list(node_lake** node, const char* LakeName, const char* LakeCountry
 }
 
 
+// Output to the console of all records
+void Display_all_records(node_lake** node) {
+	node_lake* indicator = *node;
+
+	int i = 0;
+	while (indicator)
+	{
+		printf("\nNumber: %d\nLake name: %s\nCountry: %s\nDepth: %d\nSalinity: %f\n",
+			indicator->id, indicator->LakeName, indicator->LakeCountry, indicator->LakeDepth, indicator->Salinity);
+		i++;
+
+		indicator = indicator->next;
+	}
+
+	if (!i) printf("\nRecords not found\n");
+}
+
+
 // Writing a linked list to a file
 bool Write_data_to_file(node_lake** node, const char* file)
 {
@@ -66,10 +84,9 @@ bool Write_data_to_file(node_lake** node, const char* file)
 		indicator->id, indicator->LakeName, indicator->LakeCountry, indicator->LakeDepth, indicator->Salinity);
 		indicator = indicator->next;
 	}
+	return true;
 
 }
-
-
 
 
 // Clear stdin

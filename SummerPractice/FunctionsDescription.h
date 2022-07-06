@@ -32,13 +32,13 @@ typedef struct node {
 void Add_to_list(node_lake** node, const char* LakeName, const char* LakeCountry, int LakeDepth, float Salinity);
 
 
+
 /**
-* Clear stdin
-* 
-* @param none
-* @return none
+* Output to the console of all records
+*
+* @param node Зв'язний список
 */
-int clear_stdin();
+void Display_all_records(node_lake** node);
 
 
 /**
@@ -49,5 +49,14 @@ int clear_stdin();
 * @return Успіх операції
 */
 bool Write_data_to_file(node_lake** node, const char* file);
+
+
+/**
+* Clear stdin
+*
+* @param none
+* @return none
+*/
+int clear_stdin();
 
 #endif
