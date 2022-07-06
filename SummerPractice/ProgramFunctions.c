@@ -67,6 +67,27 @@ void Display_all_records(node_lake** node) {
 	if (!i) printf("\nRecords not found\n");
 }
 
+// Display information about lakes less than 50 meters deep and salinity greater than 20%
+void Display_records_by_characteristics(node_lake** node)
+{
+	node_lake* indicator = *node;
+
+	int i = 0;
+	while (indicator)
+	{
+		if (indicator->LakeDepth < 50 && indicator->Salinity > 20)
+		{
+			printf("\nNumber: %d\nLake name: %s\nCountry: %s\nDepth: %d\nSalinity: %f\n",
+				indicator->id, indicator->LakeName, indicator->LakeCountry, indicator->LakeDepth, indicator->Salinity);
+			i++;
+		}
+
+		indicator = indicator->next;
+	}
+
+	if (!i) printf("\nRecords not found\n");
+}
+
 
 // Writing a linked list to a file
 bool Write_data_to_file(node_lake** node, const char* file)

@@ -132,13 +132,16 @@ int main(int argc, char* argv[]) {
 
 	printf("====Functions====");
 	printf("\n1.Display the entire list");
+	printf("\n2.Display information about lakes less than 50 meters deep and salinity greater than 20%");
 	printf("\nEnter the number of the feature you want to use: ");
 	scanf("%d", &choice);
 
 	if (choice == 1) {
 		Display_all_records(&node);
 	}
-
+	if (choice == 2) {
+		Display_records_by_characteristics(&node);
+	}
 
 	return 0;
 }

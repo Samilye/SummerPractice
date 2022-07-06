@@ -42,6 +42,14 @@ void Display_all_records(node_lake** node);
 
 
 /**
+* Display information about lakes less than 50 meters deep and salinity greater than 20%
+*
+* @param node Зв'язний список
+*/
+void Display_records_by_characteristics(node_lake** node);
+
+
+/**
 * Write data to file
 *
 * @param node Зв'язний список
