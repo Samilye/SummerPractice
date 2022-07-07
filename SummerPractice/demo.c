@@ -34,9 +34,12 @@ int main(int argc, char* argv[]) {
 		}
 
 		fclose(flp);
+		printf("Data from lakes.txt file loaded successfully\n\n");
 		OperationResult = true;
 	}
 	else
+		printf("It looks like the file with information about the lakes does not exist, you need to create it\n"
+			"Fill in the information below\n");
 		OperationResult = false;
 
 
@@ -47,6 +50,7 @@ int main(int argc, char* argv[]) {
 			CorrectInput = false;
 			while (!CorrectInput)
 			{
+				printf("\nDo not use spaces when filling in the name of the lake and the country of location\n");
 				printf("Enter lake name: ");
 				fgets(LakeName, 30, stdin);
 
@@ -124,7 +128,7 @@ int main(int argc, char* argv[]) {
 
 			// Add an entry to the list
 			Add_to_list(&node, LakeName, LakeCountry, LakeDepth, Salinity);
-			printf("\nRecord number %d added successfully \nPress any key to go to the next entry", i);
+			printf("\nRecord number %d added successfully \nPress any key to continue", i);
 			getchar();
 
 		}
