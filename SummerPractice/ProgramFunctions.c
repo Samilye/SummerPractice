@@ -25,6 +25,15 @@ void Add_to_list(node_lake** node, const char* LakeName, const char* LakeCountry
 		*node = new_node;
 		return;
 	}
+
+	indicator = *node;
+	while (indicator->next)
+	{
+		indicator = indicator->next;
+		id++;
+	}
+
+
 	// Create the following nodes
 	new_node = (node_lake*)malloc(sizeof(node_lake));
 
@@ -44,6 +53,19 @@ void Add_to_list(node_lake** node, const char* LakeName, const char* LakeCountry
 }
 
 
+// Remove linked list from memory
+void Delete_list_from_memory(node_lake** node) {
+	node_lake* indicator = *node;
+
+	while (indicator)
+	{
+		*node = indicator->next;
+		free(indicator);
+		indicator = *node;
+	}
+}
+
+
 // Output to the console of all records
 void Display_all_records(node_lake** node) {
 	node_lake* indicator = *node;
@@ -51,14 +73,14 @@ void Display_all_records(node_lake** node) {
 	int i = 0;
 	while (indicator)
 	{
-		printf("\nNumber: %d\nLake name: %s\nCountry: %s\nDepth: %d\nSalinity in percent: %.1f\n\n",
+		printf("\nNumber: %d\nLake Name: %s\nCountry: %s\nDepth: %d\nSalinity in percent: %.1f\n\n",
 			indicator->id, indicator->LakeName, indicator->LakeCountry, indicator->LakeDepth, indicator->Salinity);
 		i++;
 
 		indicator = indicator->next;
 	}
 
-	if (!i) printf("\nRecords not found\n");
+	if (!i) printf("\nRecords not found\n\n");
 }
 
 // Display information about lakes less than 50 meters deep and salinity greater than 20%
@@ -79,7 +101,7 @@ void Display_records_by_characteristics(node_lake** node)
 		indicator = indicator->next;
 	}
 
-	if (!i) printf("\nRecords not found\n");
+	if (!i) printf("\nRecords not found\n\n");
 }
 
 
@@ -88,7 +110,7 @@ bool Write_data_to_file(node_lake** node, const char* file)
 {
 	FILE* flp;
 
-	if (!(flp = fopen(file, "w")))
+	if (!(flp = fopen(file, "w+")))
 		return false;
 
 	node_lake* indicator = *node;
@@ -98,6 +120,7 @@ bool Write_data_to_file(node_lake** node, const char* file)
 		fprintf(flp, "%s   %s  %d    %.1f\n", indicator->LakeName, indicator->LakeCountry, indicator->LakeDepth, indicator->Salinity);
 		indicator = indicator->next;
 	}
+	fclose(flp);
 	return true;
 
 }

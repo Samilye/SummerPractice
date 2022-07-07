@@ -25,21 +25,33 @@ int main(int argc, char* argv[]) {
 	bool OperationResult;
 
 	int choice;
+	int i = 0;
 
 	if (flp = fopen(file, "r")) {
 		fseek(flp, 38, SEEK_SET);
 
 		while (fscanf(flp, "%s%s%d%f", LakeName, LakeCountry, &LakeDepth, &Salinity) != EOF) {
 			Add_to_list(&node, LakeName, LakeCountry, LakeDepth, Salinity);
+			i++;
 		}
 
 		fclose(flp);
-		printf("Data from lakes.txt file loaded successfully\n\n");
-		OperationResult = true;
+		if (i == 12) {
+			printf("Data from lakes.txt file loaded successfully\n\n");
+			OperationResult = true;
+		}
+		else {
+			printf("Error! The file must contain exclusively 12 records with correct information about the lakes\n"
+				   "Need to overwrite data\n"
+				   "Fill in the information below\n\n");
+			Delete_list_from_memory(&node);
+			OperationResult = false;
+		}
 	}
+
 	else {
 		printf("It looks like the file with information about the lakes does not exist, you need to create it\n"
-			"Fill in the information below\n");
+			"Fill in the information below\n\n");
 		OperationResult = false;
 	}
 

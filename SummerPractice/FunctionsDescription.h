@@ -32,6 +32,13 @@ typedef struct node {
 void Add_to_list(node_lake** node, const char* LakeName, const char* LakeCountry, int LakeDepth, float Salinity);
 
 
+/**
+* Remove linked list from memory
+*
+* @param node Зв'язний список
+*/
+void Delete_list_from_memory(node_lake** node);
+
 
 /**
 * Output to the console of all records
