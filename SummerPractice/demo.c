@@ -37,11 +37,11 @@ int main(int argc, char* argv[]) {
 		printf("Data from lakes.txt file loaded successfully\n\n");
 		OperationResult = true;
 	}
-	else
+	else {
 		printf("It looks like the file with information about the lakes does not exist, you need to create it\n"
 			"Fill in the information below\n");
 		OperationResult = false;
-
+	}
 
 	if (!OperationResult) {
 
@@ -135,7 +135,7 @@ int main(int argc, char* argv[]) {
 
 		// Filling a text file with the entered information about lakes
 		if (Write_data_to_file(&node, file))
-			printf("List saved to file %s\n", file);
+			printf("\nList saved to file %s\n", file);
 		else
 			printf("An error occurred while saving\n");
 
