@@ -25,19 +25,13 @@ void Add_to_list(node_lake** node, const char* LakeName, const char* LakeCountry
 		*node = new_node;
 		return;
 	}
-
-	indicator = *node;
-	while (indicator->next)
-	{
-		indicator = indicator->next;
-		id++;
-	}
-
-
 	// Create the following nodes
 	new_node = (node_lake*)malloc(sizeof(node_lake));
 
-	if (!new_node) exit(1);
+	if (!new_node) {
+		printf("Error! Not enough memory");
+		exit(1);
+	}
 
 	new_node->id = id + 1;
 	strncpy(new_node->LakeName, LakeName, 30);
