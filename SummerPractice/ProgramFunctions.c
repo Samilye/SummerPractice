@@ -114,7 +114,7 @@ bool Write_data_to_file(node_lake** node, const char* file)
 		return false;
 
 	node_lake* indicator = *node;
-	fprintf(flp, "Lake Name   Country   Depth   Salinity\n");
+	fprintf(flp, "%s", "Lake Name   Country   Depth   Salinity\n");
 	while (indicator)
 	{
 		fprintf(flp, "%s   %s  %d    %.1f\n", indicator->LakeName, indicator->LakeCountry, indicator->LakeDepth, indicator->Salinity);
