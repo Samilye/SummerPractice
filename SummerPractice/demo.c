@@ -114,7 +114,7 @@ int main(int argc, char* argv[]) {
 			CorrectInput = false;
 			while (!CorrectInput)
 			{
-				printf("Depth: ");
+				printf("Depth in meters: ");
 				// Input validation
 				if (scanf("%d", &LakeDepth) == 1 && LakeDepth > 0)
 					CorrectInput = true;

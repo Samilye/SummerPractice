@@ -73,7 +73,7 @@ void Display_all_records(node_lake** node) {
 	int i = 0;
 	while (indicator)
 	{
-		printf("\nNumber: %d\nLake Name: %s\nCountry: %s\nDepth: %d\nSalinity in percent: %.1f\n\n",
+		printf("\nNumber: %d\nLake Name: %s\nCountry: %s\nDepth: %d meters\nSalinity in percent: %.1f\n\n",
 			indicator->id, indicator->LakeName, indicator->LakeCountry, indicator->LakeDepth, indicator->Salinity);
 		i++;
 
@@ -93,7 +93,7 @@ void Display_records_by_characteristics(node_lake** node)
 	{
 		if (indicator->LakeDepth < 50 && indicator->Salinity > 20)
 		{
-			printf("\nNumber: %d\nLake Name: %s\nCountry: %s\nDepth: %d\nSalinity in percent: %.1f\n\n",
+			printf("\nNumber: %d\nLake Name: %s\nCountry: %s\nDepth: %d meters\nSalinity in percent: %.1f\n\n",
 				indicator->id, indicator->LakeName, indicator->LakeCountry, indicator->LakeDepth, indicator->Salinity);
 			i++;
 		}
