@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/SummerPractice-Test/packages.config
+/SummerPractice-Test/pch.cpp
+/SummerPractice-Test/pch.h
+/SummerPractice-Test/SummerPractice-Test.vcxproj
+/SummerPractice-Test/test.cpp

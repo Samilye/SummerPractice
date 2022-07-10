@@ -31,8 +31,14 @@ int main(int argc, char* argv[]) {
 		fseek(flp, 38, SEEK_SET);
 
 		while (fscanf(flp, "%s%s%d%f", LakeName, LakeCountry, &LakeDepth, &Salinity) != EOF) {
-			Add_to_list(&node, LakeName, LakeCountry, LakeDepth, Salinity);
-			i++;
+			if (LakeDepth <= 0 || Salinity < 0 || Salinity > 100) {
+				printf("Error! Incorrect information in the file\n");
+				CorrectInput = false;
+				break;
+			}
+				Add_to_list(&node, LakeName, LakeCountry, LakeDepth, Salinity);
+				Salinity = -1;
+				i++;
 		}
 
 		fclose(flp);
@@ -41,7 +47,7 @@ int main(int argc, char* argv[]) {
 			OperationResult = true;
 		}
 		else {
-			printf("Error! The file must contain exclusively 12 records with correct information about the lakes\n"
+			printf("The file must contain exclusively 12 records with correct information about the lakes\n"
 				   "Need to overwrite data\n"
 				   "Fill in the information below\n\n");
 			Delete_list_from_memory(&node);
@@ -127,7 +133,7 @@ int main(int argc, char* argv[]) {
 				printf("Salinity in percent: ");
 
 				// Input validation
-				if (scanf("%f", &Salinity) == 1 && Salinity >= 0)
+				if (scanf("%f", &Salinity) == 1 && Salinity >= 0 && Salinity <= 100)
 					CorrectInput = true;
 
 				if (!CorrectInput)
